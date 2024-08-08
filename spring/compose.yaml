@@ -1,0 +1,23 @@
+name: 'record-store-spring'
+
+services:
+  # The Spring boot app
+  app:
+    hostname: app
+    stdin_open: true
+    tty: true
+    build:
+      dockerfile: ./.docker/java/Dockerfile
+      context: .
+    ports:
+      - "8080:8080"
+    develop:
+      watch:
+        - action: sync
+          path: .
+          target: /app
+          ignore:
+            - build/
+            - .gradle/
+        - action: rebuild
+          path: build.gradle

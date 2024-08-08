@@ -2,7 +2,24 @@
 
 ## Development
 
-### Run
+### Docker
+
+Run:
+
+```bash
+docker compose build
+docker compose watch
+```
+
+Test:
+
+```bash
+docker compose exec app bash -c './gradlew clean test --info'
+```
+
+### Native
+
+#### Run
 
 To enable _hot reload_, run in one terminal:
 
@@ -16,7 +33,7 @@ And in another:
 ./gradlew bootRun
 ```
 
-### Execute tests
+#### Execute tests
 
 Run with `gradle`:
 
