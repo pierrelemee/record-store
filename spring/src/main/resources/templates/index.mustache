@@ -2,13 +2,13 @@
 <html lang="en" data-theme="retro">
 <head>
     <meta charset="UTF-8">
-    <title th:text="'Record store - ' + ${title}"></title>
+    <title>Record store - {{ title }}</title>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
     <main class="w-[1000px] m-auto">
-        <h1 class="text-4xl" th:text="'Record truc - ' + ${title}"></h1>
+        <h1 class="text-4xl">Titre: {{ welcome }}</h1>
     </main>
 
 </body>

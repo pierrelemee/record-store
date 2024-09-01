@@ -2,6 +2,7 @@ package fr.pierrelemee.recordstore;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,10 +17,10 @@ public class RecordStoreApplication {
     }
 
     @GetMapping(value = "/", name = "index")
-    public ModelAndView index() {
-        ModelAndView mav = new ModelAndView("index");
-        mav.addObject("title", "Bienvenue");
-        return mav;
+    public ModelAndView index(final Model model) {
+        model.addAttribute("title", "Bienvenue!");
+        model.addAttribute("welcome", "Bienvenue sur la boutique!");
+        return new ModelAndView("index");
     }
 
 
@@ -27,5 +28,4 @@ public class RecordStoreApplication {
     public String hello(@RequestParam(value = "name", defaultValue = "World") String name) {
         return String.format("Bien le bonjour %s!", name);
     }
-
 }
