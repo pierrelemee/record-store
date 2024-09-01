@@ -2,6 +2,19 @@
 
 ## Development
 
+### Prerequisites
+
+Download Chinook database:
+
+```bash
+curl -L https://github.com/lerocha/chinook-database/releases/download/v1.4.5/Chinook_MySql_AutoIncrementPKs.sql | grep -v Chinook_AutoIncrement > ./.docker/mysql/init/Chinook_MySql_AutoIncrementPKs.sql 
+
+docker compose up -d mysql
+
+# If mysql was started before:
+docker compose rm --stop mysql
+```
+
 ### Docker
 
 Run:

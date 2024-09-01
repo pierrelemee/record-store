@@ -1,6 +1,22 @@
 name: 'record-store-spring'
 
 services:
+  mysql:
+    image: mysql:8
+    container_name: mysql
+    hostname: mysql
+    command: --sql_mode="" --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    restart: always
+    volumes:
+      - .docker/mysql/init:/docker-entrypoint-initdb.d
+    environment:
+      MYSQL_RANDOM_ROOT_PASSWORD: true
+      MYSQL_DATABASE: recsto
+      MYSQL_USER: recsto
+      MYSQL_PASSWORD: recsto
+    ports:
+      - "3306:3306"
+
   # The Spring boot app
   app:
     hostname: app
