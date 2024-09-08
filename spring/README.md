@@ -21,7 +21,7 @@ Run:
 
 ```bash
 docker compose build
-docker compose watch
+docker compose up -d
 ```
 
 Test:

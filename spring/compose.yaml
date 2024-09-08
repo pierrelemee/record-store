@@ -22,18 +22,12 @@ services:
     hostname: app
     stdin_open: true
     tty: true
-    build:
-      dockerfile: ./.docker/java/Dockerfile
-      context: .
+    image: openjdk:21-bookworm
+    command: bash -c '(./gradlew build --continuous --parallel --build-cache --configuration-cache) & (./gradlew bootRun)'
+    environment:
+      DATABASE_URL: mysql://recsto:recsto@mysql:3306/recsto
     ports:
       - "8080:8080"
-    develop:
-      watch:
-        - action: sync
-          path: .
-          target: /app
-          ignore:
-            - build/
-            - .gradle/
-        - action: rebuild
-          path: build.gradle
+    working_dir: /app
+    volumes:
+      - .:/app

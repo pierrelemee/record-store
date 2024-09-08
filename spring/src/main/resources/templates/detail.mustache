@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Record store - {{ title }}</title>
+    <title>Record store{{#artist}}- {{ artist.name }}{{/artist}}</title>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
@@ -10,13 +10,10 @@
     <main class="w-[1000px] m-auto">
         <h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">{{ welcome }}</h1>
 
-        <ul>
-            {{#artists}}
-            <li>
-                <a href="artist/{{ id }}">{{ name }}</b></a>
-            </li>
-            {{/artists}}
-        </ul>
+        <h3 class="my-2 text-2xl font-bold leading-none">
+            {{#artist}}({{ artist.id }}){{ artist.name }}{{/artist}}
+            {{^artist}}<i>Aucun artiste trouvé</i>{{/artist}}
+        </h3>
     </main>
 </body>
 </html>
